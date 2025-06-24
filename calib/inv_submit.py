@@ -20,7 +20,7 @@ def wait_for_matlab_signal(filename="matlab_signal.txt"):
     the function returns and the rest of the Python script can continue.
     """
     while True:
-        subprocess.run(['git','pull','origin','short_model'])
+        subprocess.run(['git','pull','origin','master'])
         if os.path.exists(filename):
             with open(filename, "r") as f:
                 content = f.read().strip()  # Remove any extra whitespace/newlines
@@ -51,15 +51,15 @@ for i in range(1,101):
     wait_for_matlab_signal()
     with open("matlab_exe.txt", "w") as f:
         f.write("wait")
-    #subprocess.run(['git','pull','origin','short_model'])
+    #subprocess.run(['git','pull','origin','master'])
     subprocess.run(['git','add','matlab_exe.txt'])
     subprocess.run(['git','commit','-m',"inversion running"])
-    subprocess.run(['git','push','origin','short_model'])
+    subprocess.run(['git','push','origin','master'])
     subprocess.run(['sbatch','inv_submit.sh'])
     check_matlab_signal()
     subprocess.run(['git','add','data_set_edit_short.zip'])
     subprocess.run(['git','add','matlab_exe.txt'])
     subprocess.run(['git','add','matlab_signal.txt'])
     subprocess.run(['git','commit','-m',"inversion running"])
-    subprocess.run(['git','push','origin','short_model'])
+    subprocess.run(['git','push','origin','master'])
     time.sleep(400)

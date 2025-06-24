@@ -1,5 +1,5 @@
 
-def write_script(i,perm,alpha,n,res_sat):
+def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
     block1 = '''<ParameterList name="Main" type="ParameterList">
     <ParameterList name="mesh" type="ParameterList">
         <ParameterList name="surface" type="ParameterList">
@@ -24,11 +24,12 @@ def write_script(i,perm,alpha,n,res_sat):
         <Parameter name="mesh type" type="string" value="read mesh file" />
         <Parameter name="build columns from set" type="string" value="surface" />
         <ParameterList name="read mesh file parameters" type="ParameterList">
-            <Parameter name="file" type="string" value="../data/BSL_profile.exo" />
+            <Parameter name="file" type="string" value="../data/Site_1.exo" />
             <Parameter name="format" type="string" value="Exodus II" />
         </ParameterList>
         </ParameterList>
     </ParameterList>
+    
     <ParameterList name="regions" type="ParameterList">
         <ParameterList name="computational domain" type="ParameterList">
         <ParameterList name="region: all" type="ParameterList">
@@ -41,7 +42,7 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="surface" type="ParameterList">
         <ParameterList name="region: labeled set" type="ParameterList">
             <Parameter name="label" type="string" value="2" />
-            <Parameter name="file" type="string" value="../data/BSL_profile.exo" />
+            <Parameter name="file" type="string" value="../data/Site_1.exo" />
             <Parameter name="format" type="string" value="Exodus II" />
             <Parameter name="entity" type="string" value="Face" />
         </ParameterList>
@@ -49,26 +50,26 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="bottom face" type="ParameterList">
         <ParameterList name="region: labeled set" type="ParameterList">
             <Parameter name="label" type="string" value="1" />
-            <Parameter name="file" type="string" value="../data/BSL_profile.exo" />
+            <Parameter name="file" type="string" value="../data/Site_1.exo" />
             <Parameter name="format" type="string" value="Exodus II" />
             <Parameter name="entity" type="string" value="Face" />
         </ParameterList>
         </ParameterList>
         <ParameterList name="surface left" type="ParameterList">
         <ParameterList name="region: box" type="ParameterList">
-            <Parameter name="low coordinate" type="Array(double)" value="{0,-0.5}" />
-            <Parameter name="high coordinate" type="Array(double)" value="{0,0.5}" />
+            <Parameter name="low coordinate" type="Array(double)" value="{ 0,-0.5}" />
+            <Parameter name="high coordinate" type="Array(double)" value="{ 0,0.5}" />
         </ParameterList>
         </ParameterList>
         <ParameterList name="surface right" type="ParameterList">
         <ParameterList name="region: box" type="ParameterList">
-            <Parameter name="low coordinate" type="Array(double)" value="{10,-0.5}" />
-            <Parameter name="high coordinate" type="Array(double)" value="{10,0.5}" />
+            <Parameter name="low coordinate" type="Array(double)" value="{9.3,-0.5}" />
+            <Parameter name="high coordinate" type="Array(double)" value="{9.3,0.5}" />
         </ParameterList>
         </ParameterList>
         <ParameterList name="surface boundary" type="ParameterList">
         <ParameterList name="region: plane" type="ParameterList">
-            <Parameter name="point" type="Array(double)" value="{10, 0}" />
+            <Parameter name="point" type="Array(double)" value="{0, 0}" />
             <Parameter name="normal" type="Array(double)" value="{ 1, 0}" />
         </ParameterList>
         </ParameterList>
@@ -87,7 +88,7 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="GLHYMPS_100" type="ParameterList">
         <ParameterList name="region: labeled set" type="ParameterList">
             <Parameter name="label" type="string" value="100" />
-            <Parameter name="file" type="string" value="../data/BSL_profile.exo" />
+            <Parameter name="file" type="string" value="../data/Site_1.exo" />
             <Parameter name="format" type="string" value="Exodus II" />
             <Parameter name="entity" type="string" value="Cell" />
         </ParameterList>
@@ -95,21 +96,22 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="NRCS_1000" type="ParameterList">
         <ParameterList name="region: labeled set" type="ParameterList">
             <Parameter name="label" type="string" value="1000" />
-            <Parameter name="file" type="string" value="../data/BSL_profile.exo" />
+            <Parameter name="file" type="string" value="../data/Site_1.exo" />
             <Parameter name="format" type="string" value="Exodus II" />
             <Parameter name="entity" type="string" value="Cell" />
         </ParameterList>
         </ParameterList>
     </ParameterList>
+    
     <ParameterList name="cycle driver" type="ParameterList">
-        <Parameter name="start time" type="double" value="2190" />
+        <Parameter name="start time" type="double" value="701" />
         <Parameter name="start time units" type="string" value="d" />
-        <Parameter name="end time" type="double" value="2434" />
+        <Parameter name="end time" type="double" value="797" />
         <Parameter name="end time units" type="string" value="d" />
         <Parameter name="end cycle" type="int" value="10000" />
         <Parameter name="max time step size [s]" type="double" value="86400" />
         <ParameterList name="required times">
-        <Parameter name="times start period stop" type="Array(double)" value="{ 2190, 1,-1}" />
+        <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" />
         <Parameter name="times start period stop units" type="string" value="d" />
         </ParameterList>
         <ParameterList name="PK tree" type="ParameterList">
@@ -134,10 +136,13 @@ def write_script(i,perm,alpha,n,res_sat):
         </ParameterList>
     </ParameterList>
     <ParameterList name="PKs" type="ParameterList">
+    
         <ParameterList name="water_balance" type="ParameterList">
         <Parameter name="PK type" type="string" value="weak MPC" />
         <Parameter name="PKs order" type="Array(string)" value="{canopy_water, snow, surface_subsurface_water}" />
+    
         </ParameterList>
+    
         <ParameterList name="canopy_water" type="ParameterList">
         <Parameter name="PK type" type="string" value="general surface balance" />
         <Parameter name="primary variable key suffix" type="string" value="water_equivalent" />
@@ -151,9 +156,11 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="initial condition" type="ParameterList">
             <Parameter name="value" type="double" value=" 0" />
         </ParameterList>
+    
         <ParameterList name="inverse" type="ParameterList">
             <Parameter name="preconditioning method" type="string" value="diagonal" />
         </ParameterList>
+    
         <ParameterList name="time integrator" type="ParameterList">
             <Parameter name="extrapolate initial guess" type="bool" value="true" />
             <Parameter name="solver type" type="string" value="nka_bt_ats" />
@@ -180,7 +187,9 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="initial time step [s]" type="double" value="86400" />
             </ParameterList>
         </ParameterList>
+    
         </ParameterList>
+    
         <ParameterList name="snow" type="ParameterList">
         <Parameter name="PK type" type="string" value="general surface balance" />
         <Parameter name="primary variable key" type="string" value="snow-depth" />
@@ -194,9 +203,11 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="initial condition" type="ParameterList">
             <Parameter name="value" type="double" value=" 0" />
         </ParameterList>
+    
         <ParameterList name="inverse" type="ParameterList">
             <Parameter name="preconditioning method" type="string" value="diagonal" />
         </ParameterList>
+    
         <ParameterList name="time integrator" type="ParameterList">
             <Parameter name="extrapolate initial guess" type="bool" value="true" />
             <Parameter name="solver type" type="string" value="nka_bt_ats" />
@@ -223,7 +234,9 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="initial time step [s]" type="double" value="86400" />
             </ParameterList>
         </ParameterList>
+    
         </ParameterList>
+    
         <ParameterList name="surface_subsurface_water" type="ParameterList">
         <Parameter name="PK type" type="string" value="coupled water" />
         <Parameter name="PKs order" type="Array(string)" value="{flow, overland_flow}" />
@@ -232,6 +245,7 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="damp and cap the water spurt" type="bool" value="true" />
             <Parameter name="cap over atmospheric" type="double" value="0.001" />
         </ParameterList>
+    
         <ParameterList name="inverse" type="ParameterList">
             <Parameter name="preconditioning method" type="string" value="boomer amg" />
             <Parameter name="iterative method" type="string" value="gmres" />
@@ -248,6 +262,7 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="maximum number of iteration" type="int" value="80" />
             </ParameterList>
         </ParameterList>
+    
         <ParameterList name="time integrator" type="ParameterList">
             <Parameter name="extrapolate initial guess" type="bool" value="true" />
             <Parameter name="solver type" type="string" value="nka_bt_ats" />
@@ -274,7 +289,9 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="initial time step [s]" type="double" value="86400" />
             </ParameterList>
         </ParameterList>
+    
         </ParameterList>
+    
         <ParameterList name="flow" type="ParameterList">
         <Parameter name="PK type" type="string" value="richards flow" />
         <Parameter name="primary variable key" type="string" value="pressure" />
@@ -287,16 +304,18 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="diffusion" type="ParameterList">
             <Parameter name="discretization primary" type="string" value="mfd: two-point flux approximation" />
         </ParameterList>
+    
         <ParameterList name="diffusion preconditioner">
             <Parameter name="include Newton correction" type="bool" value="true" />
         </ParameterList>
+    
         <ParameterList name="boundary conditions" type="ParameterList">
-            <ParameterList name="head" type="ParameterList">
+            <ParameterList name="fixed level" type="ParameterList">
             <ParameterList name="BC left" type="ParameterList">
                 <Parameter name="regions" type="Array(string)" value="{left_face}" />
-                <ParameterList name="boundary head" type="ParameterList">
+                <ParameterList name="fixed level" type="ParameterList">
                 <ParameterList name="function-tabular" type="ParameterList">
-                    <Parameter name="file" type="string" value="../data/Water_level.h5" />
+                    <Parameter name="file" type="string" value="../data/Site_1_GW_level.h5" />
                     <Parameter name="x header" type="string" value="time [s]" />
                     <Parameter name="y header" type="string" value="Water_level [m]" />
                     <Parameter name="form" type="Array(string)" value="{linear}" />
@@ -305,9 +324,9 @@ def write_script(i,perm,alpha,n,res_sat):
             </ParameterList>
             <ParameterList name="BC right" type="ParameterList">
                 <Parameter name="regions" type="Array(string)" value="{right_face}" />
-                <ParameterList name="boundary head" type="ParameterList">
+                <ParameterList name="fixed level" type="ParameterList">
                 <ParameterList name="function-tabular" type="ParameterList">
-                    <Parameter name="file" type="string" value="../data/GW_level.h5" />
+                    <Parameter name="file" type="string" value="../data/Site_1_GW_level.h5" />
                     <Parameter name="x header" type="string" value="time [s]" />
                     <Parameter name="y header" type="string" value="Water_level [m]" />
                     <Parameter name="form" type="Array(string)" value="{linear}" />
@@ -316,11 +335,14 @@ def write_script(i,perm,alpha,n,res_sat):
             </ParameterList>
             </ParameterList>
         </ParameterList>
+    
         <ParameterList name="initial condition" type="ParameterList">
-            <Parameter name="hydrostatic head [m]" type="double" value="-6" />
+            <Parameter name="hydrostatic head [m]" type="double" value="-2.5" />
             <Parameter name="hydrostatic water density [kg m^-3]" type="double" value="1000" />
         </ParameterList>
+    
         </ParameterList>
+    
         <ParameterList name="overland_flow" type="ParameterList">
         <Parameter name="PK type" type="string" value="overland flow, pressure basis" />
         <Parameter name="primary variable key" type="string" value="surface-pressure" />
@@ -331,16 +353,18 @@ def write_script(i,perm,alpha,n,res_sat):
         <ParameterList name="diffusion" type="ParameterList">
             <Parameter name="discretization primary" type="string" value="fv: default" />
         </ParameterList>
+    
         <ParameterList name="diffusion preconditioner" type="ParameterList">
             <Parameter name="include Newton correction" type="bool" value="true" />
         </ParameterList>
+    
         <ParameterList name="boundary conditions">
             <ParameterList name="head" type="ParameterList">
-            <ParameterList name="surface left" type="ParameterList">
-                <Parameter name="regions" type="Array(string)" value="{surface left}" />
+            <ParameterList name="surface right" type="ParameterList">
+                <Parameter name="regions" type="Array(string)" value="{surface right}" />
                 <ParameterList name="boundary head" type="ParameterList">
                 <ParameterList name="function-tabular" type="ParameterList">
-                    <Parameter name="file" type="string" value="../data/Water_level.h5" />
+                    <Parameter name="file" type="string" value="../data/Site_1_Water_level.h5" />
                     <Parameter name="x header" type="string" value="time [s]" />
                     <Parameter name="y header" type="string" value="Water_level [m]" />
                     <Parameter name="form" type="Array(string)" value="{linear}" />
@@ -349,16 +373,20 @@ def write_script(i,perm,alpha,n,res_sat):
             </ParameterList>
             </ParameterList>
             <ParameterList name="zero gradient" type="ParameterList">
-            <ParameterList name="surface right" type="ParameterList">
-                <Parameter name="regions" type="Array(string)" value="{surface right}" />
+            <ParameterList name="surface left" type="ParameterList">
+                <Parameter name="regions" type="Array(string)" value="{surface left}" />
             </ParameterList>
             </ParameterList>
         </ParameterList>
+    
         <ParameterList name="initial condition" type="ParameterList">
             <Parameter name="initialize surface head from subsurface" type="bool" value="true" />
         </ParameterList>
+    
         </ParameterList>
+    
     </ParameterList>
+    
     <ParameterList name="state" type="ParameterList">
         <ParameterList name="evaluators" type="ParameterList">
         <ParameterList name="water_content" type="ParameterList">
@@ -568,7 +596,7 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="evaluator type" type="string" value="incident shortwave radiation" />
             <ParameterList name="incident shortwave radiation parameters" type="ParameterList">
             <Parameter name="daily averaged" type="bool" value="true" />
-            <Parameter name="latitude [degrees]" type="double" value="39" />
+            <Parameter name="latitude [degrees]" type="double" value="35" />
             </ParameterList>
         </ParameterList>
         <ParameterList name="surface-incoming_shortwave_radiation" type="ParameterList">
@@ -687,6 +715,8 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="constant in time" type="bool" value="true" />
             <Parameter name="evaluator type" type="string" value="depth" />
         </ParameterList>
+    '''
+    block2='''
         <ParameterList name="base_porosity">
             <Parameter name="evaluator type" type="string" value="independent variable" />
             <Parameter name="constant in time" type="bool" value="true" />
@@ -696,7 +726,7 @@ def write_script(i,perm,alpha,n,res_sat):
                 <Parameter name="component" type="string" value="cell" />
                 <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                    <Parameter name="value" type="double" value="0.06" />
+                    <Parameter name="value" type="double" value="{}" />
                 </ParameterList>
                 </ParameterList>
             </ParameterList>
@@ -705,7 +735,7 @@ def write_script(i,perm,alpha,n,res_sat):
                 <Parameter name="component" type="string" value="cell" />
                 <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                    <Parameter name="value" type="double" value="0.410506573" />
+                    <Parameter name="value" type="double" value="{}" />
                 </ParameterList>
                 </ParameterList>
             </ParameterList>
@@ -721,7 +751,7 @@ def write_script(i,perm,alpha,n,res_sat):
             </ParameterList>
         </ParameterList>
     '''
-    block2='''
+    block3='''
         <ParameterList name="permeability">
             <Parameter name="evaluator type" type="string" value="independent variable" />
             <Parameter name="constant in time" type="bool" value="true" />
@@ -731,7 +761,7 @@ def write_script(i,perm,alpha,n,res_sat):
                 <Parameter name="component" type="string" value="cell" />
                 <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                    <Parameter name="value" type="double" value="1.58e-12" />
+                    <Parameter name="value" type="double" value="{}" />
                 </ParameterList>
                 </ParameterList>
             </ParameterList>
@@ -747,7 +777,7 @@ def write_script(i,perm,alpha,n,res_sat):
             </ParameterList>
         </ParameterList>
     '''
-    block3='''
+    block4='''
         <ParameterList name="surface-relative_permeability" type="ParameterList">
             <Parameter name="evaluator type" type="string" value="independent variable constant" />
             <Parameter name="value" type="double" value=" 1" />
@@ -835,12 +865,15 @@ def write_script(i,perm,alpha,n,res_sat):
         </ParameterList>
         </ParameterList>
         <ParameterList name="initial conditions" type="ParameterList">
+    
         <ParameterList name="atmospheric_pressure" type="ParameterList">
             <Parameter name="value" type="double" value="101325" />
         </ParameterList>
+    
         <ParameterList name="gravity" type="ParameterList">
             <Parameter name="value" type="Array(double)" value="{ 0, 0,-9.80665}" />
         </ParameterList>
+    
         <ParameterList name="land cover types" type="ParameterList">
             <ParameterList name="surface domain" type="ParameterList">
             <Parameter name="rooting depth max [m]" type="double" value="10" />
@@ -861,20 +894,22 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="snow transition depth [m]" type="double" value="0.02" />
             </ParameterList>
         </ParameterList>
+
+    '''
+    block5='''
+    
         </ParameterList>
         <ParameterList name="model parameters" type="ParameterList">
         <ParameterList name="WRM parameters" type="ParameterList">
             <ParameterList name="GLHYMPS_100" type="ParameterList">
             <Parameter name="region" type="string" value="GLHYMPS_100" />
             <Parameter name="wrm type" type="string" value="van Genuchten" />
-            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.002240147" />
-            <Parameter name="van Genuchten n [-]" type="double" value="2" />
-            <Parameter name="residual saturation [-]" type="double" value="0.01" />
+            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="{}" />
+            <Parameter name="van Genuchten n [-]" type="double" value="{}" />
+            <Parameter name="residual saturation [-]" type="double" value="{}" />
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.05" />
             <Parameter name="dessicated zone thickness [m]" type="double" value="0.1" />
             </ParameterList>
-    '''
-    block4='''
             <ParameterList name="NRCS_1000" type="ParameterList">
             <Parameter name="region" type="string" value="NRCS_1000" />
             <Parameter name="wrm type" type="string" value="van Genuchten" />
@@ -884,32 +919,34 @@ def write_script(i,perm,alpha,n,res_sat):
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.05" />
             <Parameter name="dessicated zone thickness [m]" type="double" value="0.1" />
     '''
-    block5='''
+    block6='''
             </ParameterList>
         </ParameterList>
         </ParameterList>
     </ParameterList>
     <ParameterList name="visualization">
         <ParameterList name="domain" type="ParameterList">
-        <Parameter name="times start period stop" type="Array(double)" value="{2190,1,-1}" />
+        <Parameter name="times start period stop" type="Array(double)" value="{701,1,-1}" />
         <Parameter name="times start period stop units" type="string" value="d" />
         <Parameter name="time units" type="string" value="d" />
         </ParameterList>
         <ParameterList name="surface" type="ParameterList">
-        <Parameter name="times start period stop" type="Array(double)" value="{2190,1,-1}" />
+        <Parameter name="times start period stop" type="Array(double)" value="{701,1,-1}" />
         <Parameter name="times start period stop units" type="string" value="d" />
         <Parameter name="time units" type="string" value="d" />
         <Parameter name="aliased domains" type="Array(string)" value="{snow,canopy}" />
         </ParameterList>
     </ParameterList>
+    
     <ParameterList name="checkpoint" type="ParameterList">
     </ParameterList>
+    
     <ParameterList name="observations" type="ParameterList">
         <ParameterList name="fluxes" type="ParameterList">
         <Parameter name="observation output filename" type="string" value="water_balance.dat" />
         <Parameter name="write interval" type="int" value="10" />
         <Parameter name="time units" type="string" value="d" />
-        <Parameter name="times start period stop" type="Array(double)" value="{ 2190, 1,-1}" />
+        <Parameter name="times start period stop" type="Array(double)" value="{ 701, 1,-1}" />
         <Parameter name="times start period stop units" type="string" value="d" />
         <ParameterList name="observed quantities" type="ParameterList">
             <ParameterList name="surface water content [mol]" type="ParameterList">
@@ -1040,10 +1077,11 @@ def write_script(i,perm,alpha,n,res_sat):
     </ParameterList>
     </ParameterList>
     '''
-    with open('BSL_profile' + str(i) + '.xml', 'w') as f:
+    with open('Site_1_profile.xml', 'w') as f:
         f.write(block1)
-        f.write(block2.format(perm))
-        f.write(block3)
-        f.write(block4.format(alpha,n,res_sat))
-        f.write(block5)
+        f.write(block2.format(por1,por2))
+        f.write(block3.format(perm1,perm2))
+        f.write(block4)
+        f.write(block5.format(alpha1,n1,res_sat1,alpha2,n2,res_sat2))
+        f.write(block6)
 
