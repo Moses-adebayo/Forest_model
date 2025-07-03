@@ -1,5 +1,5 @@
 
-def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
+def write_script(perm2,alpha2res_sat2):
     block1 = '''<ParameterList name="Main" type="ParameterList">
     <ParameterList name="mesh" type="ParameterList">
         <ParameterList name="surface" type="ParameterList">
@@ -726,7 +726,7 @@ def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
                 <Parameter name="component" type="string" value="cell" />
                 <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                    <Parameter name="value" type="double" value="{}" />
+                    <Parameter name="value" type="double" value="0.06" />
                 </ParameterList>
                 </ParameterList>
             </ParameterList>
@@ -735,7 +735,7 @@ def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
                 <Parameter name="component" type="string" value="cell" />
                 <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                    <Parameter name="value" type="double" value="{}" />
+                    <Parameter name="value" type="double" value="0.431431" />
                 </ParameterList>
                 </ParameterList>
             </ParameterList>
@@ -761,7 +761,7 @@ def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
                 <Parameter name="component" type="string" value="cell" />
                 <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                    <Parameter name="value" type="double" value="{}" />
+                    <Parameter name="value" type="double" value="1.58e-12" />
                 </ParameterList>
                 </ParameterList>
             </ParameterList>
@@ -904,9 +904,9 @@ def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
             <ParameterList name="GLHYMPS_100" type="ParameterList">
             <Parameter name="region" type="string" value="GLHYMPS_100" />
             <Parameter name="wrm type" type="string" value="van Genuchten" />
-            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="{}" />
-            <Parameter name="van Genuchten n [-]" type="double" value="{}" />
-            <Parameter name="residual saturation [-]" type="double" value="{}" />
+            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.002240147" />
+            <Parameter name="van Genuchten n [-]" type="double" value="2" />
+            <Parameter name="residual saturation [-]" type="double" value="0.01" />
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.05" />
             <Parameter name="dessicated zone thickness [m]" type="double" value="0.1" />
             </ParameterList>
@@ -914,7 +914,7 @@ def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
             <Parameter name="region" type="string" value="NRCS_1000" />
             <Parameter name="wrm type" type="string" value="van Genuchten" />
             <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="{}" />
-            <Parameter name="van Genuchten n [-]" type="double" value="{}" />
+            <Parameter name="van Genuchten n [-]" type="double" value="1.283647" />
             <Parameter name="residual saturation [-]" type="double" value="{}" />
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.05" />
             <Parameter name="dessicated zone thickness [m]" type="double" value="0.1" />
@@ -1079,9 +1079,9 @@ def write_script(por1,por2,perm1,perm2,alpha1,n1,res_sat1,alpha2,n2,res_sat2):
     '''
     with open('Site_1_profile.xml', 'w') as f:
         f.write(block1)
-        f.write(block2.format(por1,por2))
-        f.write(block3.format(perm1,perm2))
+        f.write(block2)
+        f.write(block3.format(perm2))
         f.write(block4)
-        f.write(block5.format(alpha1,n1,res_sat1,alpha2,n2,res_sat2))
+        f.write(block5.format(alpha2,res_sat2))
         f.write(block6)
 
