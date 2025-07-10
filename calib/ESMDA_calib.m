@@ -3,18 +3,24 @@ V_obs=load('observation.txt')';
 nV = numel(V_obs);
 sim_obs=zeros(10,nV);
 % Evaluate the forward model at the current guess
-for i=1:10
-    system('C:\Users\m10921371\AppData\Local\Programs\Git\git-bash.exe -c "git pull origin ESMDA"')
-    sim_obs(i,:)=Site_1_forward(i);
+for j=1:3
+    for i=1:10
+        system('C:\Users\m10921371\AppData\Local\Programs\Git\git-bash.exe -c "git pull origin ESMDA"')
+        sim_obs(i,:)=Site_1_forward(i);
+    end
+    fid = fopen('matlab_forward.txt', 'w');
+    fprintf(fid, 'done');
+    fclose(fid);
+    fid = fopen('matlab_exe.txt', 'w');
+    fprintf(fid, 'wait');
+    fclose(fid);
+    system('git add matlab_forward.txt')
+    system('git add matlab_exe.txt')
+    system('git commit -m "final iteration"')
+    system('C:\Users\m10921371\AppData\Local\Programs\Git\git-bash.exe -c "git push origin ESMDA"')
+    writematrix(sim_obs,'forward_obs.txt');
+    waitForPythonSignal()
 end
-fid = fopen('matlab_forward.txt', 'w');
-fprintf(fid, 'done');
-fclose(fid);
-system('git add params.txt')
-system('git add matlab_forward.txt')
-system('git commit -m "final iteration"')
-system('C:\Users\m10921371\AppData\Local\Programs\Git\git-bash.exe -c "git push origin ESMDA"')
-writematrix(sim_obs,'forward_obs.txt');
 
 function waitForPythonSignal(filename)
 % waitForPythonSignal Pauses execution until the file contains 'done'
