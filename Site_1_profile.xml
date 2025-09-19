@@ -110,8 +110,8 @@
     <Parameter name="end cycle" type="int" value="10000" />
     <Parameter name="max time step size [s]" type="double" value="86400" />
     <ParameterList name="required times">
-      <Parameter name="times start period stop" type="Array(double)" value="{ 0, 1,-1}" />
-      <Parameter name="times start period stop units" type="string" value="d" />
+      <Parameter name="times start period stop" type="Array(double)" value="{ 0,3600,-1}" />
+      <Parameter name="times start period stop units" type="string" value="s" />
     </ParameterList>
     <ParameterList name="PK tree" type="ParameterList">
       <ParameterList name="water_balance" type="ParameterList">
