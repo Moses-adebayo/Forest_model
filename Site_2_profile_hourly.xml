@@ -22,7 +22,7 @@
       <Parameter name="mesh type" type="string" value="read mesh file"/>
       <Parameter name="build columns from set" type="string" value="surface"/>
       <ParameterList name="read mesh file parameters" type="ParameterList">
-        <Parameter name="file" type="string" value="../data/Site_1.exo"/>
+        <Parameter name="file" type="string" value="../data/Site_2.exo"/>
         <Parameter name="format" type="string" value="Exodus II"/>
       </ParameterList>
     </ParameterList>
@@ -40,7 +40,7 @@
     <ParameterList name="surface" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="2"/>
-        <Parameter name="file" type="string" value="../data/Site_1.exo"/>
+        <Parameter name="file" type="string" value="../data/Site_2.exo"/>
         <Parameter name="format" type="string" value="Exodus II"/>
         <Parameter name="entity" type="string" value="Face"/>
       </ParameterList>
@@ -48,7 +48,7 @@
     <ParameterList name="bottom face" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1"/>
-        <Parameter name="file" type="string" value="../data/Site_1.exo"/>
+        <Parameter name="file" type="string" value="../data/Site_2.exo"/>
         <Parameter name="format" type="string" value="Exodus II"/>
         <Parameter name="entity" type="string" value="Face"/>
       </ParameterList>
@@ -61,8 +61,8 @@
     </ParameterList>
     <ParameterList name="surface right" type="ParameterList">
       <ParameterList name="region: box" type="ParameterList">
-        <Parameter name="low coordinate" type="Array(double)" value="{9.3, -0.5}"/>
-        <Parameter name="high coordinate" type="Array(double)" value="{9.3, 0.5}"/>
+        <Parameter name="low coordinate" type="Array(double)" value="{9.6, -0.5}"/>
+        <Parameter name="high coordinate" type="Array(double)" value="{9.6, 0.5}"/>
       </ParameterList>
     </ParameterList>
     <ParameterList name="surface boundary" type="ParameterList">
@@ -79,14 +79,14 @@
     </ParameterList>
     <ParameterList name="right_face" type="ParameterList">
       <ParameterList name="region: plane" type="ParameterList">
-        <Parameter name="point" type="Array(double)" value="{9.3, 0.0, 0.0}"/>
+        <Parameter name="point" type="Array(double)" value="{9.6, 0.0, 0.0}"/>
         <Parameter name="normal" type="Array(double)" value="{1.0, 0.0, 0.0}"/>
       </ParameterList>
     </ParameterList>
     <ParameterList name="GLHYMPS_100" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="100"/>
-        <Parameter name="file" type="string" value="../data/Site_1.exo"/>
+        <Parameter name="file" type="string" value="../data/Site_2.exo"/>
         <Parameter name="format" type="string" value="Exodus II"/>
         <Parameter name="entity" type="string" value="Cell"/>
       </ParameterList>
@@ -94,7 +94,7 @@
     <ParameterList name="NRCS_1000" type="ParameterList">
       <ParameterList name="region: labeled set" type="ParameterList">
         <Parameter name="label" type="string" value="1000"/>
-        <Parameter name="file" type="string" value="../data/Site_1.exo"/>
+        <Parameter name="file" type="string" value="../data/Site_2.exo"/>
         <Parameter name="format" type="string" value="Exodus II"/>
         <Parameter name="entity" type="string" value="Cell"/>
       </ParameterList>
@@ -317,7 +317,7 @@
             <Parameter name="regions" type="Array(string)" value="{left_face}"/>
             <ParameterList name="fixed level" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../data/Site_1_GW_level_hourly.h5"/>
+                <Parameter name="file" type="string" value="../data/Site_2_GW_level_hourly.h5"/>
                 <Parameter name="x header" type="string" value="time [s]"/>
                 <Parameter name="y header" type="string" value="Water_level [m]"/>
                 <Parameter name="form" type="Array(string)" value="{linear}"/>
@@ -328,7 +328,7 @@
             <Parameter name="regions" type="Array(string)" value="{right_face}"/>
             <ParameterList name="fixed level" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../data/Site_1_GW_level_hourly.h5"/>
+                <Parameter name="file" type="string" value="../data/Site_2_GW_level_hourly.h5"/>
                 <Parameter name="x header" type="string" value="time [s]"/>
                 <Parameter name="y header" type="string" value="Water_level [m]"/>
                 <Parameter name="form" type="Array(string)" value="{linear}"/>
@@ -340,7 +340,7 @@
 
       <ParameterList name="initial conditions" type="ParameterList">
 
-        <Parameter name="hydrostatic head [m]" type="double" value="-3.0"/>
+        <Parameter name="hydrostatic head [m]" type="double" value="-1.5"/>
         <Parameter name="hydrostatic water density [kg m^-3]" type="double" value="1000.0"/>
 
       </ParameterList>
@@ -364,11 +364,11 @@
 
       <ParameterList name="boundary conditions">
         <ParameterList name="head" type="ParameterList">
-          <ParameterList name="surface right" type="ParameterList">
-            <Parameter name="regions" type="Array(string)" value="{surface right}"/>
+          <ParameterList name="surface left" type="ParameterList">
+            <Parameter name="regions" type="Array(string)" value="{surface left}"/>
             <ParameterList name="boundary head" type="ParameterList">
               <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../data/Site_1_Water_level_hourly.h5"/>
+                <Parameter name="file" type="string" value="../data/Site_2_Water_level_hourly.h5"/>
                 <Parameter name="x header" type="string" value="time [s]"/>
                 <Parameter name="y header" type="string" value="Water_level [m]"/>
                 <Parameter name="form" type="Array(string)" value="{linear}"/>
@@ -377,8 +377,8 @@
           </ParameterList>
         </ParameterList>
         <ParameterList name="zero gradient" type="ParameterList">
-          <ParameterList name="surface left" type="ParameterList">
-            <Parameter name="regions" type="Array(string)" value="{surface left}"/>
+          <ParameterList name="surface right" type="ParameterList">
+            <Parameter name="regions" type="Array(string)" value="{surface right}"/>
           </ParameterList>
         </ParameterList>
       </ParameterList>
