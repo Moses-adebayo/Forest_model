@@ -61,8 +61,8 @@
     </ParameterList>
     <ParameterList name="surface right" type="ParameterList">
       <ParameterList name="region: box" type="ParameterList">
-        <Parameter name="low coordinate" type="Array(double)" value="{9.3, -0.5}"/>
-        <Parameter name="high coordinate" type="Array(double)" value="{9.3, 0.5}"/>
+        <Parameter name="low coordinate" type="Array(double)" value="{113.0, -0.5}"/>
+        <Parameter name="high coordinate" type="Array(double)" value="{113.0, 0.5}"/>
       </ParameterList>
     </ParameterList>
     <ParameterList name="surface boundary" type="ParameterList">
@@ -79,7 +79,7 @@
     </ParameterList>
     <ParameterList name="right_face" type="ParameterList">
       <ParameterList name="region: plane" type="ParameterList">
-        <Parameter name="point" type="Array(double)" value="{9.3, 0.0, 0.0}"/>
+        <Parameter name="point" type="Array(double)" value="{113.0, 0.0, 0.0}"/>
         <Parameter name="normal" type="Array(double)" value="{1.0, 0.0, 0.0}"/>
       </ParameterList>
     </ParameterList>
@@ -312,20 +312,15 @@
       </ParameterList>
 
       <ParameterList name="boundary conditions" type="ParameterList">
-        <ParameterList name="fixed level" type="ParameterList">
+        <ParameterList name="head" type="ParameterList">
           <ParameterList name="BC left" type="ParameterList">
             <Parameter name="regions" type="Array(string)" value="{left_face}"/>
-            <ParameterList name="fixed level" type="ParameterList">
-              <ParameterList name="function-tabular" type="ParameterList">
-                <Parameter name="file" type="string" value="../data/Site_1_GW_level_hourly.h5"/>
-                <Parameter name="x header" type="string" value="time [s]"/>
-                <Parameter name="y header" type="string" value="Water_level [m]"/>
-                <Parameter name="form" type="Array(string)" value="{linear}"/>
+            <ParameterList name="boundary head" type="ParameterList">
+              <ParameterList name="function-constant">
+                <Parameter name="value" type="double" value="-4.0"/>
               </ParameterList>
             </ParameterList>
           </ParameterList>
-        </ParameterList>
-        <ParameterList name="head" type="ParameterList">
           <ParameterList name="BC right" type="ParameterList">
             <Parameter name="regions" type="Array(string)" value="{right_face}"/>
             <ParameterList name="boundary head" type="ParameterList">
@@ -342,7 +337,7 @@
 
       <ParameterList name="initial conditions" type="ParameterList">
 
-        <Parameter name="hydrostatic head [m]" type="double" value="-3.0"/>
+        <Parameter name="hydrostatic head [m]" type="double" value="-4.0"/>
         <Parameter name="hydrostatic water density [kg m^-3]" type="double" value="1000.0"/>
 
       </ParameterList>
@@ -378,11 +373,16 @@
             </ParameterList>
           </ParameterList>
         </ParameterList>
-        <ParameterList name="zero gradient" type="ParameterList">
-          <ParameterList name="surface left" type="ParameterList">
-            <Parameter name="regions" type="Array(string)" value="{surface left}"/>
-          </ParameterList>
-        </ParameterList>
+		<ParameterList name="seepage face head">
+			<ParameterList name="surface left">
+			<Parameter name="regions" type="Array(string)" value="{surface left}"/>
+			<ParameterList name="boundary head">
+				<ParameterList name="function-constant">
+				<Parameter name="value" type="double" value="0.0"/>
+				</ParameterList>
+			</ParameterList>
+			</ParameterList>
+		</ParameterList>
       </ParameterList>
 
       <ParameterList name="initial conditions" type="ParameterList">
