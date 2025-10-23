@@ -61,8 +61,8 @@
       </ParameterList>
       <ParameterList name="surface right" type="ParameterList">
         <ParameterList name="region: box" type="ParameterList">
-          <Parameter name="low coordinate" type="Array(double)" value="{113.0, -0.5}"/>
-          <Parameter name="high coordinate" type="Array(double)" value="{113.0, 0.5}"/>
+          <Parameter name="low coordinate" type="Array(double)" value="{104.0, -0.5}"/>
+          <Parameter name="high coordinate" type="Array(double)" value="{104.0, 0.5}"/>
         </ParameterList>
       </ParameterList>
       <ParameterList name="surface boundary" type="ParameterList">
@@ -79,7 +79,7 @@
       </ParameterList>
       <ParameterList name="right_face" type="ParameterList">
         <ParameterList name="region: plane" type="ParameterList">
-          <Parameter name="point" type="Array(double)" value="{113.0, 0.0, 0.0}"/>
+          <Parameter name="point" type="Array(double)" value="{104.0, 0.0, 0.0}"/>
           <Parameter name="normal" type="Array(double)" value="{1.0, 0.0, 0.0}"/>
         </ParameterList>
       </ParameterList>
