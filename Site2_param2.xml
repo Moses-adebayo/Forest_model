@@ -767,7 +767,7 @@
             <Parameter name="component" type="string" value="cell"/>
             <ParameterList name="function" type="ParameterList">
               <ParameterList name="function-constant" type="ParameterList">
-                <Parameter name="value" type="double" value="1.0000000000001513e-14"/>
+                <Parameter name="value" type="double" value="1.0000000000001472e-14"/>
               </ParameterList>
             </ParameterList>
           </ParameterList>
