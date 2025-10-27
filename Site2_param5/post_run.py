@@ -9,7 +9,7 @@ import time
 #from write_script import write_script
 import zipfile
 import sys
-param=np.loadtxt('../Site2_param4.txt') 
+param=np.loadtxt('../Site2_param5.txt') 
 file_path = 'ats_vis_data.VisIt.xmf'
 
 # Read the file content

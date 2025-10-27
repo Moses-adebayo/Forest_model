@@ -10,7 +10,7 @@ import time
 import zipfile
 import sys
 param=np.loadtxt('../Site2_param3.txt') 
-file_path = '../Site2_param101/ats_vis_data.VisIt.xmf'
+file_path = 'ats_vis_data.VisIt.xmf'
 
 # Read the file content
 with open(file_path, 'r') as file:
@@ -26,7 +26,7 @@ loc=pd.read_csv('../data/Site_2_mesh_long.csv').iloc[:,[0,2]]
 for i in range(len(numbers)):
     fin=loc.copy()
     temp=loc.copy()
-    df=h5py.File('../Site1_param101/ats_vis_data.h5', 'r')
+    df=h5py.File('ats_vis_data.h5', 'r')
     fin['porosity']=df['base_porosity'][str(numbers[i])]
     fin['U']=df['darcy_velocity.x'][str(numbers[i])]
     fin['W']=df['darcy_velocity.z'][str(numbers[i])]
