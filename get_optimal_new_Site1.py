@@ -135,21 +135,3 @@ t =len(Alpha)+1
 sim_obs= forward(Num_ens)# shape of sim_obs (Num_ens,Num_obs)# combine from param1 to param10
 np.savetxt('./sim_obs' + str(t) + '.txt', np.mean(sim_obs,axis=0))
 savemat('./sim_obs' + str(t) + '.mat', {'sim_obs':sim_obs}) # save observations for each step
-
-####
-#!/bin/bash -l
-#SBATCH -A CLI185
-#SBATCH -N 1
-#SBATCH -J run_ensemble
-#SBATCH --mail-user=moses_adebayo@mines.edu
-#SBATCH --mail-type=ALL
-#SBATCH -t 02:00:00
-#SBATCH -p batch
-
-for i in {7..10}
-do
-        cd ../Site1_param$i
-        srun -n 50 ats --xml_file=../Site1_param${i}.xml &> out.log
-done
-
-wait
