@@ -103,9 +103,9 @@
     </ParameterList>
   
     <ParameterList name="cycle driver" type="ParameterList">
-      <Parameter name="start time" type="double" value="170.0"/>
+      <Parameter name="start time" type="double" value="300.0"/>
       <Parameter name="start time units" type="string" value="d"/>
-      <Parameter name="end time" type="double" value="430.0"/>
+      <Parameter name="end time" type="double" value="565.0"/>
       <Parameter name="end time units" type="string" value="d"/>
       <Parameter name="end cycle" type="int" value="10000"/>
       <Parameter name="max time step size [s]" type="double" value="86400.0"/>
@@ -756,7 +756,7 @@
               <Parameter name="component" type="string" value="cell"/>
               <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                  <Parameter name="value" type="double" value="2.230742842673882e-12"/>
+                  <Parameter name="value" type="double" value="1.4382836370841706e-15"/>
                 </ParameterList>
               </ParameterList>
             </ParameterList>
@@ -765,7 +765,7 @@
               <Parameter name="component" type="string" value="cell"/>
               <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                  <Parameter name="value" type="double" value="3.045099831025318e-13"/>
+                  <Parameter name="value" type="double" value="3.970188681090539e-14"/>
                 </ParameterList>
               </ParameterList>
             </ParameterList>
@@ -868,7 +868,7 @@
         <ParameterList name="gravity" type="ParameterList">
           <Parameter name="value" type="Array(double)" value="{0.0, 0.0, -9.80665}"/>
         </ParameterList>
-  
+        
       </ParameterList>
       <ParameterList name="model parameters" type="ParameterList">
         <ParameterList name="WRM parameters" type="ParameterList">
@@ -884,13 +884,14 @@
           <ParameterList name="NRCS_1000" type="ParameterList">
             <Parameter name="region" type="string" value="NRCS_1000"/>
             <Parameter name="wrm type" type="string" value="van Genuchten"/>
-            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.000078"/>
-            <Parameter name="van Genuchten n [-]" type="double" value="1.283647"/>
-            <Parameter name="residual saturation [-]" type="double" value="0.288154"/>
+            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.00016059802234628844"/>
+            <Parameter name="van Genuchten n [-]" type="double" value="1.9535126081695156"/>
+            <Parameter name="residual saturation [-]" type="double" value="0.11644527287570082"/>
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.05"/>
             <Parameter name="dessicated zone thickness [m]" type="double" value="0.1"/>
           </ParameterList>
         </ParameterList>
+        
         <ParameterList name="land cover types" type="ParameterList">
           <ParameterList name="surface domain" type="ParameterList">
             <Parameter name="rooting depth max [m]" type="double" value="10.0"/>
@@ -915,12 +916,12 @@
     </ParameterList>
     <ParameterList name="visualization">
       <ParameterList name="domain" type="ParameterList">
-        <Parameter name="times start period stop" type="Array(double)" value="{200.0, 1.0, -1.0}"/>
+        <Parameter name="times start period stop" type="Array(double)" value="{334.0, 1.0, -1.0}"/>
         <Parameter name="times start period stop units" type="string" value="d"/>
         <Parameter name="time units" type="string" value="d"/>
       </ParameterList>
       <ParameterList name="surface" type="ParameterList">
-        <Parameter name="times start period stop" type="Array(double)" value="{200.0, 1.0, -1.0}"/>
+        <Parameter name="times start period stop" type="Array(double)" value="{334.0, 1.0, -1.0}"/>
         <Parameter name="times start period stop units" type="string" value="d"/>
         <Parameter name="time units" type="string" value="d"/>
         <Parameter name="aliased domains" type="Array(string)" value="{snow, canopy}"/>
@@ -935,7 +936,7 @@
         <Parameter name="observation output filename" type="string" value="water_balance.dat"/>
         <Parameter name="write interval" type="int" value="10"/>
         <Parameter name="time units" type="string" value="d"/>
-        <Parameter name="times start period stop" type="Array(double)" value="{200.0, 1.0, -1.0}"/>
+        <Parameter name="times start period stop" type="Array(double)" value="{334.0, 1.0, -1.0}"/>
         <Parameter name="times start period stop units" type="string" value="d"/>
         <ParameterList name="observed quantities" type="ParameterList">
           <ParameterList name="surface water content [mol]" type="ParameterList">
