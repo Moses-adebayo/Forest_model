@@ -16,7 +16,7 @@ import copy
 def submit():
     while True:
         subprocess.run(['git', 'pull', 'origin', 'ES_MDA2'])
-        with open(prompt_file, 'r') as f:
+        with open('Site1_param_ats_prompt.txt', 'r') as f:
             content = f.read().strip()   
         if 'done' in content:
             # copy final ats files
@@ -39,7 +39,7 @@ while True:
             subprocess.run(['git', 'pull', 'origin', 'ES_MDA2'])
             with open('Site1_param_ats_prompt.txt', 'w') as f:
                 f.write('wait')
-            subprocess.run(['git', 'add', 'Site1_param_ats_prompt*.txt'])
+            subprocess.run(['git', 'add', 'Site1_param_ats_prompt.txt'])
             subprocess.run(["git", "commit", "-m", "inversion in progress"])
             subprocess.run(['git', 'push', 'origin', 'ES_MDA2'])
             break
