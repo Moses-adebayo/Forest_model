@@ -104,9 +104,9 @@ def write_script_site1(perm1, perm2,alpha,n,res,i):
     </ParameterList>
   
     <ParameterList name="cycle driver" type="ParameterList">
-      <Parameter name="start time" type="double" value="300.0"/>
+      <Parameter name="start time" type="double" value="83.0"/>
       <Parameter name="start time units" type="string" value="d"/>
-      <Parameter name="end time" type="double" value="565.0"/>
+      <Parameter name="end time" type="double" value="400.0"/>
       <Parameter name="end time units" type="string" value="d"/>
       <Parameter name="end cycle" type="int" value="10000"/>
       <Parameter name="max time step size [s]" type="double" value="86400.0"/>
@@ -319,7 +319,7 @@ def write_script_site1(perm1, perm2,alpha,n,res,i):
               <Parameter name="regions" type="Array(string)" value="{left_face}"/>
               <ParameterList name="boundary head" type="ParameterList">
                 <ParameterList name="function-constant">
-                  <Parameter name="value" type="double" value="-4.0"/>
+                  <Parameter name="value" type="double" value="-1.8"/>
                 </ParameterList>
               </ParameterList>
             </ParameterList>
@@ -339,7 +339,7 @@ def write_script_site1(perm1, perm2,alpha,n,res,i):
   
         <ParameterList name="initial conditions" type="ParameterList">
   
-          <Parameter name="hydrostatic head [m]" type="double" value="-4.0"/>
+          <Parameter name="hydrostatic head [m]" type="double" value="-1.8"/>
           <Parameter name="hydrostatic water density [kg m^-3]" type="double" value="1000.0"/>
   
         </ParameterList>
@@ -899,7 +899,7 @@ def write_script_site1(perm1, perm2,alpha,n,res,i):
     block5='''
         <ParameterList name="land cover types" type="ParameterList">
           <ParameterList name="surface domain" type="ParameterList">
-            <Parameter name="rooting depth max [m]" type="double" value="10.0"/>
+            <Parameter name="rooting depth max [m]" type="double" value="5.0"/>
             <Parameter name="rooting profile alpha [-]" type="double" value="6.0"/>
             <Parameter name="rooting profile beta [-]" type="double" value="2.0"/>
             <Parameter name="maximum xylem capillary pressure [Pa]" type="double" value="2240000.0"/>
@@ -921,15 +921,9 @@ def write_script_site1(perm1, perm2,alpha,n,res,i):
     </ParameterList>
     <ParameterList name="visualization">
       <ParameterList name="domain" type="ParameterList">
-        <Parameter name="times start period stop" type="Array(double)" value="{334.0, 1.0, -1.0}"/>
+        <Parameter name="times start period stop" type="Array(double)" value="{100.0, 1.0, -1.0}"/>
         <Parameter name="times start period stop units" type="string" value="d"/>
         <Parameter name="time units" type="string" value="d"/>
-      </ParameterList>
-      <ParameterList name="surface" type="ParameterList">
-        <Parameter name="times start period stop" type="Array(double)" value="{334.0, 1.0, -1.0}"/>
-        <Parameter name="times start period stop units" type="string" value="d"/>
-        <Parameter name="time units" type="string" value="d"/>
-        <Parameter name="aliased domains" type="Array(string)" value="{snow, canopy}"/>
       </ParameterList>
     </ParameterList>
   
@@ -941,7 +935,7 @@ def write_script_site1(perm1, perm2,alpha,n,res,i):
         <Parameter name="observation output filename" type="string" value="water_balance.dat"/>
         <Parameter name="write interval" type="int" value="10"/>
         <Parameter name="time units" type="string" value="d"/>
-        <Parameter name="times start period stop" type="Array(double)" value="{334.0, 1.0, -1.0}"/>
+        <Parameter name="times start period stop" type="Array(double)" value="{100.0, 1.0, -1.0}"/>
         <Parameter name="times start period stop units" type="string" value="d"/>
         <ParameterList name="observed quantities" type="ParameterList">
           <ParameterList name="surface water content [mol]" type="ParameterList">
