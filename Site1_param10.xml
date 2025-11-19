@@ -756,7 +756,7 @@
               <Parameter name="component" type="string" value="cell"/>
               <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                  <Parameter name="value" type="double" value="5.754135559197148e-13"/>
+                  <Parameter name="value" type="double" value="3.1689849896255214e-15"/>
                 </ParameterList>
               </ParameterList>
             </ParameterList>
@@ -765,7 +765,7 @@
               <Parameter name="component" type="string" value="cell"/>
               <ParameterList name="function" type="ParameterList">
                 <ParameterList name="function-constant" type="ParameterList">
-                  <Parameter name="value" type="double" value="1.1560038781160683e-11"/>
+                  <Parameter name="value" type="double" value="6.322827457892527e-12"/>
                 </ParameterList>
               </ParameterList>
             </ParameterList>
@@ -884,9 +884,9 @@
           <ParameterList name="NRCS_1000" type="ParameterList">
             <Parameter name="region" type="string" value="NRCS_1000"/>
             <Parameter name="wrm type" type="string" value="van Genuchten"/>
-            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="0.0008869149398876001"/>
-            <Parameter name="van Genuchten n [-]" type="double" value="1.7147831996716196"/>
-            <Parameter name="residual saturation [-]" type="double" value="0.016195650474407425"/>
+            <Parameter name="van Genuchten alpha [Pa^-1]" type="double" value="1.902901856244636e-06"/>
+            <Parameter name="van Genuchten n [-]" type="double" value="1.8829820443518857"/>
+            <Parameter name="residual saturation [-]" type="double" value="0.025398191430485204"/>
             <Parameter name="smoothing interval width [saturation]" type="double" value="0.05"/>
             <Parameter name="dessicated zone thickness [m]" type="double" value="0.1"/>
           </ParameterList>
